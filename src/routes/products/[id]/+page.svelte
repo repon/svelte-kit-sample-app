@@ -1,44 +1,10 @@
-<script lang="ts">
-  import Slider from "../Slider.svelte";
-  interface Product {
-    id: string
-    name: string
-    price: number
-    images: string[]
-  }
-  let product: Product = {
-    id: 'svelte-book',
-    name: 'Svelte Guide',
-    price: 3500,
-    images: [
-    'https://github.com/svelte-book/sample-app/raw/main/static/svelte-book-1.png',
-    'https://github.com/svelte-book/sample-app/raw/main/static/svelte-book-2.png',
-    'https://github.com/svelte-book/sample-app/raw/main/static/svelte-book-3.png',
-    ]
-  }
-  let relatedProducts: Product[] = [
-    {
-      id: 'react-book',
-      name: 'React Book',
-      price: 3500,
-      images: []
-    },
-    {
-      id: 'vue-book',
-      name: 'Vue Book',
-      price: 3500,
-      images: []
-    },
-    {
-      id: 'angular-book',
-      name: 'Angular Book',
-      price: 3500,
-      images: []
-    },
-  ]
+<script>
+  import Slider from "./Slider.svelte";
+  export let data;
+  $: ( { product, relatedProducts } = data )
 
-  let cart: string[] = [];
-  const addCart = (productId: string) => {cart = [...cart, productId]}
+  let cart = [];
+  const addCart = (productId) => {cart = [...cart, productId]}
 
 
 </script>
