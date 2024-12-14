@@ -1,47 +1,9 @@
-const loadProducts = async () => (
-  [
-    {
-      id: 'svelte-book',
-      name: 'Svelte Guide',
-      price: 3500,
-      images: [
-      'https://github.com/svelte-book/sample-app/raw/main/static/svelte-book-1.png',
-      'https://github.com/svelte-book/sample-app/raw/main/static/svelte-book-2.png',
-      'https://github.com/svelte-book/sample-app/raw/main/static/svelte-book-3.png',
-      ]
-    },
-    {
-      id: 'react-book',
-      name: 'React Book',
-      price: 3500,
-      images: [
-        'https://github.com/svelte-book/sample-app/raw/main/static/react-book-1.png',
-        'https://github.com/svelte-book/sample-app/raw/main/static/react-book-2.png',
-        'https://github.com/svelte-book/sample-app/raw/main/static/react-book-3.png',
-      ]
-    },
-    {
-      id: 'vue-book',
-      name: 'Vue Book',
-      price: 3500,
-      images: [
-        'https://github.com/svelte-book/sample-app/raw/main/static/vue-book-1.png',
-        'https://github.com/svelte-book/sample-app/raw/main/static/vue-book-2.png',
-        'https://github.com/svelte-book/sample-app/raw/main/static/vue-book-3.png',
-      ]
-    },
-    {
-      id: 'angular-book',
-      name: 'Angular Book',
-      price: 3500,
-      images: [
-        'https://github.com/svelte-book/sample-app/raw/main/static/angular-book-1.png',
-        'https://github.com/svelte-book/sample-app/raw/main/static/angular-book-2.png',
-        'https://github.com/svelte-book/sample-app/raw/main/static/angular-book-3.png',
-      ]
-    },
-  ]
-)
+import { readFile } from 'fs/promises'
+
+const loadProducts = async () => {
+  const content = await readFile('data/products.json', { encoding: 'utf-8' });
+  return JSON.parse(content)
+}
 
 const getProductFromDatabase = async (productId) => {
   const products = await loadProducts()
